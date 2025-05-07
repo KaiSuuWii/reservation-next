@@ -11,7 +11,7 @@ export async function refreshAccessToken(request: NextRequest) {
 
     if (!refreshToken) {
         return NextResponse.json(
-            { message: "Refresh token not found" }, 
+            { message: "Refresh token not found" },
             { status: 401 }
         );
     }
@@ -28,7 +28,7 @@ export async function refreshAccessToken(request: NextRequest) {
 
         if (!db) {
             return NextResponse.json(
-                { message: "Database connection failed" }, 
+                { message: "Database connection failed" },
                 { status: 500 }
             );
         }
@@ -38,7 +38,7 @@ export async function refreshAccessToken(request: NextRequest) {
 
         if (!account) {
             return NextResponse.json(
-                { message: "Account not found" }, 
+                { message: "Account not found" },
                 { status: 404 }
             );
         }
@@ -57,19 +57,19 @@ export async function refreshAccessToken(request: NextRequest) {
 
         // Return success response with the new access token
         const response = NextResponse.json(
-            { message: "Token refreshed successfully", payload: payload }, 
+            { message: "Token refreshed successfully", payload: payload },
             { status: 200 }
         );
-        
+
         response.cookies.set('access_token', accessToken, {
             httpOnly: true,
         });
-        
+
         return response;
     } catch (error) {
         console.error("Error refreshing token:", error);
         return NextResponse.json(
-            { message: "Token refresh failed" }, 
+            { message: "Token refresh failed" },
             { status: 500 }
         );
     }
