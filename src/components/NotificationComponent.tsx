@@ -31,7 +31,7 @@ interface Notification {
     presentation_equipment?: string[] | string;
     stage_options?: string[] | string;
     lighting_options?: string[] | string;
-    
+
     // files/attachments for completed events
     attachments?: string[];
 }
@@ -97,6 +97,10 @@ const NotificationComponent: React.FC<NotificationComponentProps> = ({
             setSelectedNotification(null); // Close the modal after acknowledging
         }
     };
+
+    //const handleBilling
+
+    //const securityPass
 
     const handleApprove = () => {
         if (selectedNotification) {
@@ -510,12 +514,26 @@ const NotificationComponent: React.FC<NotificationComponentProps> = ({
                             )}
 
                             {selectedNotification.type === 'approval' && (
-                                <button
+                                <><button
                                     className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 transition-colors"
                                     onClick={handleApprove}
                                 >
                                     Approve
                                 </button>
+                                    <button
+                                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 transition-colors"
+                                        onClick={handleApprove}
+                                    >
+                                        Billing
+                                    </button> //if click billing, show billing modal
+
+                                    <button
+                                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 transition-colors"
+                                        onClick={handleApprove}
+                                    >
+                                        SecurityPass
+                                    </button> //if click billing, show billing modal
+                                </>
                             )}
                         </div>
                     </div>
